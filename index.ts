@@ -4,24 +4,33 @@
  */
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
-import { MAX_SESSION_NAME_LENGTH, normalizeName } from "./src/session-name.ts";
+import {
+  cleanSessionName,
+  MAX_SESSION_NAME_LENGTH,
+} from "./src/session-name.ts";
 
 export default function sessionName(pi: ExtensionAPI): void {
   pi.registerTool({
     name: "set_session_name",
     label: "Set Session Name",
     description:
-      "Set the current session's display name. Use a short, descriptive title for the work in this session.",
-    promptSnippet: "Rename the current session with a short descriptive title",
+      "Set the current session's display name. Pass the exact title you want shown, " +
+      `written as a short plain phrase of at most ${String(MAX_SESSION_NAME_LENGTH)} characters. ` +
+      "Keep it to a single line. Do not wrap it in quotes or brackets, and do not add " +
+      "trailing punctuation. Only include a closing bracket when it pairs with an opening " +
+      'one that belongs in the title, like "Fix login bug (retry path)".',
+    promptSnippet:
+      "Rename the current session with a short, plain title. No surrounding quotes or brackets and no trailing punctuation.",
     parameters: Type.Object({
       name: Type.String({
-        description: "New session name",
+        description:
+          "The exact title to display, as a short plain phrase on a single line.",
         minLength: 1,
-        maxLength: MAX_SESSION_NAME_LENGTH * 2,
+        maxLength: MAX_SESSION_NAME_LENGTH,
       }),
     }),
     execute: async (_toolCallId, params) => {
-      const name = normalizeName(params.name);
+      const name = cleanSessionName(params.name);
       if (!name) {
         throw new Error("Session name cannot be empty.");
       }
