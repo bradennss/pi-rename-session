@@ -1,6 +1,6 @@
 {
   "name": "pi-rename-session",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Pi extension that provides a tool for renaming the current session.",
   "type": "module",
   "license": "MIT",
