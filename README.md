@@ -17,7 +17,7 @@ pi -e npm:pi-rename-session
 
 ## Usage
 
-The model renames the session by calling the `set_session_name` tool with a short, descriptive title. Every name is trimmed, collapsed to a single line, and bounded to 60 characters.
+The model renames the session by calling the `set_session_name` tool with a short, descriptive title. The tool description tells the model how to phrase the title, so the name it sends is used as is.
 
 ## Requirements
 
