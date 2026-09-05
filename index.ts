@@ -3,6 +3,7 @@
  * call to rename the current session.
  */
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { Container, Text } from "@earendil-works/pi-tui";
 import { Type } from "typebox";
 import {
   cleanSessionName,
@@ -40,6 +41,18 @@ export default function sessionName(pi: ExtensionAPI): void {
         content: [{ type: "text", text: `Session renamed to "${name}".` }],
         details: { name },
       };
+    },
+
+    renderCall(args, theme) {
+      let text = theme.fg("toolTitle", theme.bold("set session name"));
+      if (args.name) {
+        text += ` ${theme.fg("toolTitle", theme.bold("to"))} ${theme.fg("accent", args.name)}`;
+      }
+      return new Text(text, 0, 0);
+    },
+
+    renderResult() {
+      return new Container();
     },
   });
 }
