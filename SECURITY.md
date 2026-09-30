@@ -5,7 +5,7 @@
 `pi-rename-session` is a Pi extension. Like all Pi extensions it runs with your full user permissions. This extension:
 
 - Sets the session display name through Pi's `setSessionName` API when the model calls the `set_session_name` tool.
-- Has no network calls, no telemetry, and no credential access. Its only runtime dependency is `typebox` for tool parameter schemas.
+- Has no network calls, no telemetry, and no credential access. Pi provides the `typebox` package used for tool parameter schemas.
 
 ## Reporting a vulnerability
 
