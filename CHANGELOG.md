@@ -1,5 +1,11 @@
 # pi-rename-session
 
+## 1.1.1
+
+### Patch Changes
+
+- [#5](https://github.com/bradennss/pi-rename-session/pull/5) [`d5039af`](https://github.com/bradennss/pi-rename-session/commit/d5039afd9e4b49599b559bd7ecc69e31100a19df) Thanks [@bradennss](https://github.com/bradennss)! - Declare `typebox` as a host-provided peer dependency so Pi doesn't load a duplicate runtime copy.
+
 ## 1.1.0
 
 ### Minor Changes
